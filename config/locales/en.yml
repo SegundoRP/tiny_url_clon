@@ -44,6 +44,7 @@ en:
       type_a_url: Type a URL
       shorten_url: Shorten
     not_found: Shortened URL not found
+    token_collision: Token collision number %{number}, retrying...
   activerecord:
     models:
       shortened_url: ShortenedUrl
@@ -53,3 +54,5 @@ en:
           attributes:
             full_url:
               invalid: is not a valid url
+            token:
+              retry_failed: A unique token could not be generated. Please try again.

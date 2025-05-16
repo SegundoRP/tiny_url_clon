@@ -8,7 +8,7 @@ class ShortenedUrlsController < ApplicationController
   def create
     @shortened_url = ShortenedUrl.new(short_url_params)
 
-    if @shortened_url.save
+    if @shortened_url.persist_with_random_token!
       redirect_to shortened_url_info_path(@shortened_url.token)
     else
       render :new, status: :bad_request
