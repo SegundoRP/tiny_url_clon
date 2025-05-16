@@ -29,3 +29,27 @@
 
 en:
   hello: "Hello world"
+  shortened_urls:
+    info:
+      statistics_for: Statistics for
+      full_url: Full URL
+      shortened_url: Shortened URL
+      visit_total: Total Visits
+      date: Fecha
+      client_ip: IP
+      user_agent: User Agent
+      referer: Referer
+    new:
+      shorten_your_url: Shorten your URL
+      type_a_url: Type a URL
+      shorten_url: Shorten
+    not_found: Shortened URL not found
+  activerecord:
+    models:
+      shortened_url: ShortenedUrl
+    errors:
+      models:
+        shortened_url:
+          attributes:
+            full_url:
+              invalid: is not a valid url
