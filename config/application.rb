@@ -9,6 +9,9 @@ Bundler.require(*Rails.groups)
 module TinyUrlClon
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
+    config.eager_load_paths << Rails.root.join('lib')
+    config.autoload_paths << Rails.root.join('lib')
+
     config.load_defaults 7.1
 
     # Please, add to the `ignore` list any other `lib` subdirectories that do
