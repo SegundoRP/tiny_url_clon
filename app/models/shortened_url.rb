@@ -2,8 +2,8 @@ class ShortenedUrl < ApplicationRecord
   has_many :visits, dependent: :destroy_async
 
   validates :full_url, :token, presence: true
+  validates :full_url, length: { maximum: 2048 }
   validates :token, uniqueness: true
-
   validate :validate_full_url
 
   def persist_with_random_token!(attempts = 10)
