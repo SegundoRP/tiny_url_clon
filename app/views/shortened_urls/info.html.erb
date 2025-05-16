@@ -1,0 +1,25 @@
+<h2><%= t('.statistics_for') %> <%= @shortened_url.token %></h2>
+<p><%= t('.full_url') %>: <%= @shortened_url.full_url %></p>
+<p><%= t('.shortened_url') %>: <%= link_to short_url_for(@shortened_url), redirect_url(@shortened_url.token), rel: "nofollow", data: { turbo: false } %></p>
+<p><%= t('.visit_total') %>: <%= @visits.count %></p>
+
+<table>
+  <thead>
+    <tr>
+      <th><%= t('.date') %></th>
+      <th><%= t('.client_ip') %></th>
+      <th><%= t('.user_agent') %></th>
+      <th><%= t('.referer') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @visits.each do |visit| %>
+      <tr>
+        <td><%= visit.created_at.strftime("%d/%m/%Y %H:%M") %></td>
+        <td><%= visit.ip_address %></td>
+        <td><%= visit.user_agent %></td>
+        <td><%= visit.referer %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
