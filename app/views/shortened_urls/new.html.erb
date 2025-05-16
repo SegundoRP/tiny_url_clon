@@ -1,0 +1,12 @@
+<h1><%= t('.shorten_your_url') %></h1>
+
+<%= form_with model: @shortened_url do |f| %>
+  <% if @shortened_url.errors.present? %>
+    <% @shortened_url.errors.full_messages.each do |error_message| %>
+      <%= error_message %>
+    <% end %>
+  <% end %>
+  <%= f.label :full_url, t('.type_a_url') %><br>
+  <%= f.text_field :full_url %><br>
+  <%= f.submit t('.shorten_url') %>
+<% end %>
