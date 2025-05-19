@@ -1,24 +1,41 @@
-# README
+# TinyURL Clone in Ruby on Rails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a simple URL shortener built with Ruby on Rails. It allows users to shorten long URLs and track basic visit statistics (IP address, user agent and referer).
 
-Things you may want to cover:
+## Features
 
-* Ruby version
+- Generate a short token using `SecureRandom.urlsafe_base64`
+- Unique token generation with collision handling
+- Redirect to the original URL via the short token
+- Track visit statistics for each shortened URL
+- Prevent multiple visits on page load with proper Turbo configuration
 
-* System dependencies
+## Technologies
 
-* Configuration
+- Ruby on Rails 7.1.5.1
+- PostgreSQL
+- Turbo (Hotwire) for interactivity
 
-* Database creation
+## Getting Started
 
-* Database initialization
+### Setup
 
-* How to run the test suite
+```bash
+git clone git@github.com:SegundoRP/tiny_url_clon.git
+cd tiny_url_clon
+bundle install
+rails db:setup
+rails server
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+## Usage
 
-* Deployment instructions
+- Create a new shortened URL from the homepage.
+- Use the generated short link to access the original URL.
+- View statistics for each short URL.
 
-* ...
+## Security Notes
+
+- Tokens are generated randomly to avoid predictability.
+- Token uniqueness is guaranteed with retries in case of collisions.
+- All redirects are handled with allow_other_host: true for safety.
