@@ -1,4 +1,5 @@
 class ShortenedUrl < ApplicationRecord
+  BYTE_SIZE = 6
   has_many :visits, dependent: :destroy_async
 
   validates :full_url, :token, presence: true
@@ -8,7 +9,7 @@ class ShortenedUrl < ApplicationRecord
 
   def persist_with_random_token!(attempts = 10)
     attempts.times do |i|
-      self.token = SecureRandom.urlsafe_base64(6).gsub(/[_-]/, '')
+      self.token = SecureRandom.urlsafe_base64(BYTE_SIZE).gsub(/[_-]/, '')
       save!
       return true
     rescue ActiveRecord::RecordNotUnique
